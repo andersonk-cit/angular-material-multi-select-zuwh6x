@@ -21,6 +21,7 @@ export class SelectMultipleExample {
   ];
 
   tiposLancamentoSelecionados = [];
+  acao = 'Nenhuma';
 
   public openedChange(opened: boolean) {
     const stringConcatenada = this.tiposLancamentoSelecionados.join(' ');
@@ -29,12 +30,15 @@ export class SelectMultipleExample {
         'emitir evento para chamada na API com a string concatenada! Exemplo: ',
         stringConcatenada
       );
+
+      this.acao = `emitir evento para chamada na API com a string concatenada! Exemplo: ${stringConcatenada}`;
     }
   }
 
   public reset(event) {
     this.tiposLancamentoSelecionados = [];
     event.stopPropagation();
+    this.acao = 'emitir evento para chamada na API zerando o filtro!';
     console.log('emitir evento para chamada na API zerando o filtro!');
   }
 }

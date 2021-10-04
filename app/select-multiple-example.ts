@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
 
 /** @title Select with multiple selection */
 @Component({
@@ -25,10 +24,9 @@ export class SelectMultipleExample {
 
   public openedChange(opened: boolean) {
     const stringConcatenada = this.tiposLancamentoSelecionados.join(' ');
-    console.log(opened ? 'opened' : 'closed');
     if (!opened) {
       console.log(
-        'emitir evento para chamada na API com a string concatenada!',
+        'emitir evento para chamada na API com a string concatenada! Exemplo: ',
         stringConcatenada
       );
     }

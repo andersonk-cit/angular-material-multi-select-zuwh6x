@@ -1,0 +1,41 @@
+<mat-form-field>
+  <mat-select
+    multiple
+    placeholder="Tipos Lançamentos"
+    [(value)]="tiposLancamentoSelecionados"
+    (openedChange)="openedChange($event)"
+    [ngClass]="{'without-arrow' : tiposLancamentoSelecionados.length > 0, 'with-arrow' : tiposLancamentoSelecionados.length === 0}"
+  >
+    <mat-select-trigger>
+      {{tiposLancamentoSelecionados.length > 0 ? tiposLancamentoSelecionados[0]
+      : ''}}
+      <span
+        *ngIf="tiposLancamentoSelecionados?.length > 1"
+        class="example-additional-selection"
+      >
+        (+{{tiposLancamentoSelecionados.length - 1}}
+        {{tiposLancamentoSelecionados?.length === 2 ? 'tipo' : 'tipos'}})
+      </span>
+    </mat-select-trigger>
+    <mat-option
+      *ngFor="let tipoLancamento of tiposLancamento"
+      [value]="tipoLancamento"
+      >{{tipoLancamento}}</mat-option
+    >
+  </mat-select>
+  <button
+    mat-button
+    *ngIf="tiposLancamentoSelecionados.length > 0"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="reset($event)"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+<p>{{tiposLancamentoSelecionados | json}}</p>
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
